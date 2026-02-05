@@ -1,0 +1,17 @@
+services :
+  ansible:
+      build:
+        context: .
+        dockerfile: docker/ansible/Dockerfile
+        args:
+          ANSIBLE_VERSION: ${ANSIBLE_VERSION:-9.1.0}
+      image: ansible:${VERSION:-latest}
+      volumes:
+        - ./ansible:/ansible
+      environment:
+        - SSH_PRIVATE_KEY=${SSH_PRIVATE_KEY:-}
+        - SSH_KNOWN_HOSTS=${SSH_KNOWN_HOSTS:-}
+        
+        # Ansible configuration
+        - ANSIBLE_HOST_KEY_CHECKING=${ANSIBLE_HOST_KEY_CHECKING:-False}
+        - ANSIBLE_VAULT_PASSWORD=${ANSIBLE_VAULT_PASSWORD:-}
