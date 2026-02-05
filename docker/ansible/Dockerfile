@@ -21,7 +21,7 @@ RUN pip install --no-cache-dir \
     netaddr
 
 # Make entrypoint.sh runnable.
-COPY entrypoint.sh /entrypoint.sh
+COPY docker/ansible/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]

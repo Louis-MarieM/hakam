@@ -9,9 +9,12 @@ services :
       volumes:
         - ./ansible:/ansible
       environment:
+        # Versions
+        - ANSIBLE_VERSION=${ANSIBLE_VERSION:-9.1.0}
+        
+        # SSH configuration
         - SSH_PRIVATE_KEY=${SSH_PRIVATE_KEY:-}
         - SSH_KNOWN_HOSTS=${SSH_KNOWN_HOSTS:-}
         
         # Ansible configuration
         - ANSIBLE_HOST_KEY_CHECKING=${ANSIBLE_HOST_KEY_CHECKING:-False}
-        - ANSIBLE_VAULT_PASSWORD=${ANSIBLE_VAULT_PASSWORD:-}
